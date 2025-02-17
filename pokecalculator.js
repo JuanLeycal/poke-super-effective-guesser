@@ -24,7 +24,7 @@ const typeBase = [
     [1,2,1,0.5,1,1,1,1,0.5,0.5,1,1,1,1,1,2,2,1]
 ];
 
-function typeCalculator(attack, types) {
+export function typeCalculator(attack, types) {
     let total = 1;
     
     for (let type of types) {
