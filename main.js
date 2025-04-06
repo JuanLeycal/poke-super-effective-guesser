@@ -1,6 +1,11 @@
 import { getPokemon, getRandomNumber, getMove, getRandomNumber2 } from "./clase_poke.js";
 import { typeCalculator } from "./pokecalculator.js";
 
+//Sound effects
+
+var se_se = new Audio("se/se_se.mp3");
+se_se.volume = 0.5;
+
 // === Inicializar puntaje ===
 let puntaje = parseInt(localStorage.getItem("puntaje")) || 0;
 const puntajeSpan = document.getElementById("puntaje");
@@ -76,11 +81,13 @@ toggleDisplay('loading');
 mostrarImagen(pokemon);
 toggleDisplay('game-container');
 
+
 // === Manejar clic en botones ===
 function manejarRespuesta(tipoMovimiento) {
     const esCorrecto = typeCalculator(tipoMovimiento, tipoPokemon) > 1.0;
 
     if (esCorrecto) {
+        se_se.play()
         alert("CORRECTO");
         puntaje++;
     } else {
