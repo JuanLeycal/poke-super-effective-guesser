@@ -87,18 +87,28 @@ function manejarRespuesta(tipoMovimiento) {
     const esCorrecto = typeCalculator(tipoMovimiento, tipoPokemon) > 1.0;
 
     if (esCorrecto) {
-        se_se.play()
-        alert("CORRECTO");
+        se_se.play();
+        toggleDisplay('game-container');
+        toggleDisplay('loader-gif');
         puntaje++;
+        localStorage.setItem("puntaje", puntaje);
+        puntajeSpan.textContent = puntaje;
+
+        // Esperar 2 segundos antes de recargar
+        setTimeout(() => {
+            location.reload();
+        }, 2000);
     } else {
         alert("MALO DE MIERDA");
         puntaje = 0;
-    }
+        localStorage.setItem("puntaje", puntaje);
+        puntajeSpan.textContent = puntaje;
 
-    localStorage.setItem("puntaje", puntaje);
-    puntajeSpan.textContent = puntaje;
-    location.reload();
+        // Recarga inmediata
+        location.reload();
+    }
 }
+
 
 // === Asignar eventos a todos los botones ===
 document.querySelectorAll("button[id^='button']").forEach(button => {
