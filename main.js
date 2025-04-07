@@ -50,6 +50,11 @@ toggleDisplay('game-container');
 
 const pokemon = await getPokemon(getRandomNumber());
 const tipoPokemon = obtenerTipos(pokemon);
+let typesLabel = tipoPokemon;
+
+// Seleccionar el h2 por su id y asignarle el valor de la variable
+document.querySelector("#types").innerText = typesLabel;
+
 let moves = [];
 
 do {
